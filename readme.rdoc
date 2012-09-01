@@ -1,0 +1,21 @@
+= Programmers test
+
+Welcome to ConcepticHQ programmers test. This test is written to check your qualification as a programmer. These tests are short but tricky. Good luck!
+
+= HTML, CSS and JS test
+
+We have a example layout html_css_js/index.html.
+HTML/CSS - Style this layout according to wireframe.
+Footer must always stick to bottom. header background must be in 100% width of the page.
+
+
+= SQL Join test (HABTM relationship)
+
+In example file sql/sql_join_test we have a sql file for PostgreSQL database.
+There are three tables in this structure: posts, categories_posts, categories.
+We have four category records, five post records and four categories_posts records.
+Let's write a sql join statement, that will select all posts with category "IT" and second one, that will select all posts without category.
+
+= Ruby Gems test
+
+= Ruby test

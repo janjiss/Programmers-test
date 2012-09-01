@@ -1,0 +1,301 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.1.5
+-- Dumped by pg_dump version 9.1.5
+-- Started on 2012-09-01 14:38:27 EEST
+
+SET statement_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- TOC entry 167 (class 3079 OID 11681)
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 1922 (class 0 OID 0)
+-- Dependencies: 167
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 162 (class 1259 OID 24876)
+-- Dependencies: 5
+-- Name: categories; Type: TABLE; Schema: public; Owner: developer; Tablespace: 
+--
+
+CREATE TABLE categories (
+    id integer NOT NULL,
+    title character varying(255)
+);
+
+
+ALTER TABLE public.categories OWNER TO developer;
+
+--
+-- TOC entry 161 (class 1259 OID 24874)
+-- Dependencies: 5 162
+-- Name: categories_id_seq; Type: SEQUENCE; Schema: public; Owner: developer
+--
+
+CREATE SEQUENCE categories_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.categories_id_seq OWNER TO developer;
+
+--
+-- TOC entry 1923 (class 0 OID 0)
+-- Dependencies: 161
+-- Name: categories_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: developer
+--
+
+ALTER SEQUENCE categories_id_seq OWNED BY categories.id;
+
+
+--
+-- TOC entry 1924 (class 0 OID 0)
+-- Dependencies: 161
+-- Name: categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: developer
+--
+
+SELECT pg_catalog.setval('categories_id_seq', 4, true);
+
+
+--
+-- TOC entry 163 (class 1259 OID 24882)
+-- Dependencies: 5
+-- Name: categories_posts; Type: TABLE; Schema: public; Owner: developer; Tablespace: 
+--
+
+CREATE TABLE categories_posts (
+    category_id integer,
+    post_id integer
+);
+
+
+ALTER TABLE public.categories_posts OWNER TO developer;
+
+--
+-- TOC entry 165 (class 1259 OID 24889)
+-- Dependencies: 5
+-- Name: posts; Type: TABLE; Schema: public; Owner: developer; Tablespace: 
+--
+
+CREATE TABLE posts (
+    id integer NOT NULL,
+    title character varying(255),
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.posts OWNER TO developer;
+
+--
+-- TOC entry 164 (class 1259 OID 24887)
+-- Dependencies: 165 5
+-- Name: posts_id_seq; Type: SEQUENCE; Schema: public; Owner: developer
+--
+
+CREATE SEQUENCE posts_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.posts_id_seq OWNER TO developer;
+
+--
+-- TOC entry 1925 (class 0 OID 0)
+-- Dependencies: 164
+-- Name: posts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: developer
+--
+
+ALTER SEQUENCE posts_id_seq OWNED BY posts.id;
+
+
+--
+-- TOC entry 1926 (class 0 OID 0)
+-- Dependencies: 164
+-- Name: posts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: developer
+--
+
+SELECT pg_catalog.setval('posts_id_seq', 5, true);
+
+
+--
+-- TOC entry 166 (class 1259 OID 24895)
+-- Dependencies: 5
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: developer; Tablespace: 
+--
+
+CREATE TABLE schema_migrations (
+    version character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public.schema_migrations OWNER TO developer;
+
+--
+-- TOC entry 1902 (class 2604 OID 24879)
+-- Dependencies: 162 161 162
+-- Name: id; Type: DEFAULT; Schema: public; Owner: developer
+--
+
+ALTER TABLE ONLY categories ALTER COLUMN id SET DEFAULT nextval('categories_id_seq'::regclass);
+
+
+--
+-- TOC entry 1903 (class 2604 OID 24892)
+-- Dependencies: 164 165 165
+-- Name: id; Type: DEFAULT; Schema: public; Owner: developer
+--
+
+ALTER TABLE ONLY posts ALTER COLUMN id SET DEFAULT nextval('posts_id_seq'::regclass);
+
+
+--
+-- TOC entry 1911 (class 0 OID 24876)
+-- Dependencies: 162 1915
+-- Data for Name: categories; Type: TABLE DATA; Schema: public; Owner: developer
+--
+
+COPY categories (id, title) FROM stdin;
+1	IT
+2	Business
+3	Marketing
+4	Finance
+\.
+
+
+--
+-- TOC entry 1912 (class 0 OID 24882)
+-- Dependencies: 163 1915
+-- Data for Name: categories_posts; Type: TABLE DATA; Schema: public; Owner: developer
+--
+
+COPY categories_posts (category_id, post_id) FROM stdin;
+1	1
+1	2
+1	3
+3	4
+\.
+
+
+--
+-- TOC entry 1913 (class 0 OID 24889)
+-- Dependencies: 165 1915
+-- Data for Name: posts; Type: TABLE DATA; Schema: public; Owner: developer
+--
+
+COPY posts (id, title, created_at, updated_at) FROM stdin;
+1	New product!	2012-09-01 11:36:45.4935	2012-09-01 11:36:45.4935
+2	More awsome product!	2012-09-01 11:36:45.515105	2012-09-01 11:36:45.515105
+3	Great news	2012-09-01 11:36:45.522588	2012-09-01 11:36:45.522588
+4	Awsome news	2012-09-01 11:36:45.53155	2012-09-01 11:36:45.53155
+5	Some other great post	2012-09-01 11:36:45.539661	2012-09-01 11:36:45.539661
+\.
+
+
+--
+-- TOC entry 1914 (class 0 OID 24895)
+-- Dependencies: 166 1915
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: developer
+--
+
+COPY schema_migrations (version) FROM stdin;
+20120901112741
+20120901112721
+20120901112700
+\.
+
+
+--
+-- TOC entry 1905 (class 2606 OID 24881)
+-- Dependencies: 162 162 1916
+-- Name: categories_pkey; Type: CONSTRAINT; Schema: public; Owner: developer; Tablespace: 
+--
+
+ALTER TABLE ONLY categories
+    ADD CONSTRAINT categories_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 1909 (class 2606 OID 24894)
+-- Dependencies: 165 165 1916
+-- Name: posts_pkey; Type: CONSTRAINT; Schema: public; Owner: developer; Tablespace: 
+--
+
+ALTER TABLE ONLY posts
+    ADD CONSTRAINT posts_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 1906 (class 1259 OID 24885)
+-- Dependencies: 163 1916
+-- Name: index_categories_posts_on_category_id; Type: INDEX; Schema: public; Owner: developer; Tablespace: 
+--
+
+CREATE INDEX index_categories_posts_on_category_id ON categories_posts USING btree (category_id);
+
+
+--
+-- TOC entry 1907 (class 1259 OID 24886)
+-- Dependencies: 163 1916
+-- Name: index_categories_posts_on_post_id; Type: INDEX; Schema: public; Owner: developer; Tablespace: 
+--
+
+CREATE INDEX index_categories_posts_on_post_id ON categories_posts USING btree (post_id);
+
+
+--
+-- TOC entry 1910 (class 1259 OID 24898)
+-- Dependencies: 166 1916
+-- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: developer; Tablespace: 
+--
+
+CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
+
+
+--
+-- TOC entry 1921 (class 0 OID 0)
+-- Dependencies: 5
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+-- Completed on 2012-09-01 14:38:27 EEST
+
+--
+-- PostgreSQL database dump complete
+--
+
