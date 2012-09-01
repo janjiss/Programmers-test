@@ -1,13 +1,22 @@
 = Programmers test
 
-Welcome to ConcepticHQ programmers test. This test is written to check your qualification as a programmer. These tests are short but tricky. Good luck!
+Welcome to ConcepticHQ programmers test. This test is written to check your qualification as a programmer. These tests are short but a bit tricky. Good luck!
 
 = HTML, CSS and JS test
 
-We have a example layout html_css_js/index.html.
-HTML/CSS - Style this layout according to wireframe.
-Footer must always stick to bottom. header background must be in 100% width of the page.
+We have a example layout HTML_CSS_js/index.html.
+HTML/CSS - Style this layout according to wireframe HTML_CSS_js/wireframe.png.
+Footer must always stick to bottom. header background must be in 100% width of the page and in height of the header.
+JS - Header has search box. Searchbox must contain text "Search...". If user clicks in this field, text must disappear. User should not be able to submit text without entering anything.
+In right sidebar we have two select boxes. If on first selectbox user selects Option 1, second selectbox must have only Suboption 1. If user selects Option 2, then only Suboption 2 is displayed. And the same goes for Option 3.
 
+Note on HTML/CSS: You are free to use classes and id's as you please. Move tags around as you need it. jQuery 1.8 is added from Googles CDN.
+
+Quality measure HTML/CSS: Readability, possibility of reusing classes and id's in other pages, SEO.
+
+Note on JS: You are free to add data attributes, classes and id's to tags.
+
+Quality measure: Readability of code, conciseness, usage of jQuery.
 
 = SQL Join test (HABTM relationship)
 
@@ -16,6 +25,13 @@ There are three tables in this structure: posts, categories_posts, categories.
 We have four category records, five post records and four categories_posts records.
 Let's write a sql join statement, that will select all posts with category "IT" and second one, that will select all posts without category.
 
-= Ruby Gems test
+Quality measure: You just need to accomplish this task.
 
 = Ruby test
+
+We have two ruby files weather.rb and weather_spec.rb. Weather spec is an RSpec test for this task.
+weather.rb contains Weather class, on which our test is based. When creating new instance of Weather a class, we pass file_url. As our test states we will use weather_kuldiga.xml and weather_ventspils.xml in the same directory.
+
+Note: You must use regular expressions to get data from the XML file. Please do not use libraries like Nokogiri.
+
+Quality measure: Readability of code, conciseness, structure.
