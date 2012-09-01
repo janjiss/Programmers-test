@@ -10,11 +10,11 @@ Footer must always stick to bottom. header background must be in 100% width of t
 JS - Header has search box. Searchbox must contain text "Search...". If user clicks in this field, text must disappear. User should not be able to submit text without entering anything.
 In right sidebar we have two select boxes. If on first selectbox user selects Option 1, second selectbox must have only Suboption 1. If user selects Option 2, then only Suboption 2 is displayed. And the same goes for Option 3.
 
-Note on HTML/CSS: You are free to use classes and id's as you please. Move tags around as you need it. jQuery 1.8 is added from Googles CDN.
+Note on HTML/CSS: You are free to use classes and ids as you please. Move tags around as you need it. jQuery 1.8 is added from Googles CDN.
 
-Quality measure HTML/CSS: Readability, possibility of reusing classes and id's in other pages, SEO.
+Quality measure HTML/CSS: Readability, possibility of reusing classes and ids in other pages, SEO.
 
-Note on JS: You are free to add data attributes, classes and id's to tags.
+Note on JS: You are free to add data attributes, classes and ids to tags.
 
 Quality measure: Readability of code, conciseness, usage of jQuery.
 
